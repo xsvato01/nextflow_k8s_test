@@ -31,7 +31,7 @@ ENV PATH=$CONDA_DIR/bin:$PATH
 
 # Install the conda environment
 COPY environment.yml /
-RUN conda env create --quiet -f /environment.yml && conda clean -a
+RUN conda env create -f /environment.yml && conda clean -a
 
 # Add conda installation dir to PATH (instead of doing 'conda activate')
 ENV PATH /opt/conda/envs/nextflow_k8s_test/bin:$PATH
