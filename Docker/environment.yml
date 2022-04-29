@@ -1,0 +1,21 @@
+# You can use this file to create a conda environment for this pipeline:
+#   conda env create -f environment.yml
+name: nextflow_k8s_test
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - bioconda::bwa-mem2=2.0=he513fc3_1
+  - bioconda::bwa=0.7.17=hed695b0_7
+  - bioconda::fastqc=0.11.9=0
+  - bioconda::gatk4-spark=4.1.7.0=0
+  - bioconda::multiqc=1.8=py_2
+  - bioconda::cutadapt
+  - bioconda::qualimap=2.2.2d=1
+  - bioconda::samtools=1.9=h10a08f8_12
+  - bioconda::snpeff=4.3.1t=0
+  - bioconda::strelka=2.9.10=0
+  - bioconda::trim-galore=0.6.5=0
+  - bioconda::vcfanno=0.3.2=0
+  - bioconda::vcftools=0.1.16=he513fc3_4
