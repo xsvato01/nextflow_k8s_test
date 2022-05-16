@@ -4,7 +4,7 @@ params.outdir = "Next_ik"
 
 process FASTQC{
 	tag "FASTQC on $name using $task.cpus CPUs and $task.memory memory"
-	publishDir  "${params.outdir}/QC", pattern: 'fastqc_out/*.html'
+	publishDir  "${params.outdir}/QC", mode:'copy', pattern: 'fastqc_out/*.html'
 	
 	input:
 	tuple val(name), path(reads)
@@ -21,7 +21,7 @@ process FASTQC{
 
 process CUTADAPT{
 	tag "CUTADAPT on $name using $task.cpus CPUs and $task.memory memory" 
-	publishDir "${params.outdir}/trimmed/"
+	publishDir "${params.outdir}/trimmed/", mode:'copy'
 		
 	input:
 	tuple val(name), path(reads)
@@ -38,7 +38,7 @@ process CUTADAPT{
 
 process BWAMEM {
 	tag "BWAMEM on $name using $task.cpus CPUs and $task.memory memory"
-	publishDir "${params.outdir}/mapped"
+	publishDir "${params.outdir}/mapped", mode:'copy'
 
 	input:
 	tuple val(name),path(reads)
@@ -56,7 +56,7 @@ process BWAMEM {
 
 process SAMCLN {
 	tag "SAMCLN on $name using $task.cpus CPUs and $task.memory memory"
-	publishDir "${params.outdir}/bams/"
+	publishDir "${params.outdir}/bams/", mode:'copy'
 
 	input:
 	tuple val(name),path(reads)
@@ -75,7 +75,7 @@ process SAMCLN {
 
 process VARCAL {
 	tag "VARCAL on $name using $task.cpus CPUs and $task.memory memory"
-	publishDir "${params.outdir}/VCFs/"
+	publishDir "${params.outdir}/VCFs/", mode:'copy'
 
 	input:
 	path bam_files
