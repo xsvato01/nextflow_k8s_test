@@ -14,3 +14,4 @@ dependencies:
   - bioconda::qualimap
   - bioconda::samtools
   - bioconda::snpeff
+  - bioconda::picard
