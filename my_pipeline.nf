@@ -4,7 +4,7 @@ params.outdir = "Next_ik"
 
 process FASTQC{
 	tag "FASTQC on $name using $task.cpus CPUs and $task.memory memory"
-	publishDir  "${params.outdir}/QC", mode:'copy', pattern: 'fastqc_out/*.html'
+	publishDir  "${params.outdir}/QC", pattern: 'fastqc_out/*.html', mode:'copy'
 	
 	input:
 	tuple val(name), path(reads)
@@ -95,7 +95,7 @@ rawfastq = channel.fromFilePairs("${params.outdir}/raw_fastq/wVA*_R{1,2}*", chec
 //		.map{[it.getName(),it]}
 
 workflow {
-//	FASTQC(rawfastq)
+	FASTQC(rawfastq)
 	trimmed = CUTADAPT(rawfastq)
 	sams = BWAMEM(trimmed)
 	bams = SAMCLN(sams)
